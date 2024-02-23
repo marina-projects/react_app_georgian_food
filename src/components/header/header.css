@@ -1,0 +1,74 @@
+.header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: space-between;
+  }
+  
+.header h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.logo-area {
+    width: 45%;
+    justify-content: flex-start;
+    padding-left: 3%;
+    gap: 10px;
+}
+
+.logo-area img {
+    height: 50px;
+}
+
+.logo-area p {
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+.login-area {
+    width: 45%;
+    justify-content: flex-end;
+    padding-right: 3%;
+    gap: 20px;
+}
+
+.login-area button {
+    padding: 12px 24px;
+    background-color: rgb(236, 192, 0);
+    border: none;
+    font-size: 16px;
+}
+
+button.login-button {
+    background-color: transparent;
+    border: 1px solid rgb(236, 192, 0);
+}
+
+@media screen and (max-width: 767px) {
+
+    .logo-area img {
+        height: 40px;
+    }
+
+    .logo-area p {
+        text-transform: unset;
+        font-size: 14px;
+    }
+    .login-area {
+        gap: 10px;
+    }
+
+    .login-area button {
+        padding: 8px 15px;
+        background-color: rgb(236, 192, 0);
+        border: none;
+        font-size: 12px;
+    }
+
+    button.login-button {
+        background-color: transparent;
+        border: 1px solid rgb(236, 192, 0);
+    }
+    
+}

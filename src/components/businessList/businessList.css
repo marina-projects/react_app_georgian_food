@@ -1,0 +1,44 @@
+.business-list {
+   margin-top: 70px;
+   margin-bottom: 70px;
+   width: 70%;
+   gap: 50px;
+}
+
+.sorting {
+    gap: 20px;
+}
+
+.sorting span {
+    color: black;
+}
+
+.sorting button {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgb(79, 79, 79);
+    color: black;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 767px) {
+    .business-list {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 90%;
+        gap: 30px;
+    }
+
+    .sorting {
+        gap: 10px;
+    }
+
+    .sorting button {
+        font-size: 14px;
+    }
+
+    .sorting span {
+        font-size: 14px;
+    }
+}
