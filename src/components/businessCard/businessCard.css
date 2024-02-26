@@ -50,19 +50,48 @@
 }
 
 @media screen and (max-width: 767px) {
+
+    .business-card {
+        flex-direction: column;
+    }
+
+
     .business-card img {
-        height: 150px;
-        width: 30%;
+        height: 180px;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .card-text-area {
+        width: 90%;
+        justify-content: space-between;
+        margin-bottom: 25px;
     }
 
     .card-text-area h3 {
         font-size: 18px;
         padding-left: 12px;
+        margin-top: 20px;
+        margin-left: 0;
+        padding: 0;
+        text-align: center;
     }
 
     .card-text-area p {
         font-size: 14px;
         text-align: left;
+        width: 100%;
+    }
+
+    .card-address-area {
+        width: 45%;
+        gap: 5px;
+    }
+    
+    .card-rating-area {
+        align-items: flex-start;
+        width: 40%;
+        gap: 10px;
     }
     
 }

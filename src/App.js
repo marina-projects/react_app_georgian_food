@@ -6,11 +6,13 @@ import { businessExample } from './data/businesseExample';
 import { yelpSorting } from './data/yelpSorting';
 
 function App() {
+  
+
+
   return (
     <div className="App">
         <Header />
         <SearchBar 
-
         />
         <BusinessList 
             yelpSorting={yelpSorting}

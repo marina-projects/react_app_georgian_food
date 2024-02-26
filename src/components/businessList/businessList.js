@@ -1,14 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import BusinessCard from "../businessCard/businessCard";
 import './businessList.css';
 
 const BusinessList = ({businesses, yelpSorting}) => {
+
+    const [activeSort, setActiveSort] = useState(null);
+
+    const handleSortClick = (index) => {
+        setActiveSort(index);
+    }
+
     return (
         <div className="business-list div-column">
             <div className="sorting div-row">
                 <span>Sort by:</span>
-                {yelpSorting.map((sortItem) => (
-                    <button>{sortItem.name}</button>
+                {yelpSorting.map((sortItem, index) => (
+                    <button className={activeSort === index ? 'sort-button-active' : 'sort-button'} onClick={() => handleSortClick(index)} key={index}>{sortItem.name}</button>
                 ))}
             </div>
             {businesses.map((businessItem) => (

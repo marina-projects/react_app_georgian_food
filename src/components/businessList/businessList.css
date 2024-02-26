@@ -13,13 +13,24 @@
     color: black;
 }
 
-.sorting button {
+.sorting button, button.sort-button {
     background-color: transparent;
     border: none;
     border-radius: 0;
     border-bottom: 1px solid rgb(79, 79, 79);
     color: black;
     font-size: 16px;
+}
+
+.sorting button:hover {
+    border-bottom: 1px solid rgb(167, 109, 2);
+    color:  rgb(167, 109, 2);
+}
+
+button.sort-button-active {
+    color: rgb(167, 109, 2);
+    border-bottom: 1px solid rgb(167, 109, 2);
+
 }
 
 @media screen and (max-width: 767px) {
@@ -42,3 +53,5 @@
         font-size: 14px;
     }
 }
+
+
