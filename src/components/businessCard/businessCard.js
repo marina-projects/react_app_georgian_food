@@ -18,7 +18,6 @@ const BusinessCard = (props) => {
                 </div>
                 <div className="card-rating-area div-column">
                 <Rating name="read-only" value={value} readOnly />
-
                     <p>Rating: {props.rating} stars</p>
                     <p>{props.reviewCount} reviews</p>
                 </div>

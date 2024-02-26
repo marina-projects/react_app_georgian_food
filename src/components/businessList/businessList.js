@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import BusinessCard from "../businessCard/businessCard";
 import './businessList.css';
 
-const BusinessList = ({businesses, yelpSorting}) => {
+const BusinessList = ({businesses, yelpSorting, visibilityOfSearchDiv, businessValue, cityValue, clearSearchHandler}) => {
 
     const [activeSort, setActiveSort] = useState(null);
 
@@ -12,6 +12,10 @@ const BusinessList = ({businesses, yelpSorting}) => {
 
     return (
         <div className="business-list div-column">
+            <div className="if-search" style={visibilityOfSearchDiv}>
+                <p>Searching for: {businessValue} in {cityValue}</p>
+                <button onClick={clearSearchHandler}>Clear search</button>
+            </div>
             <div className="sorting div-row">
                 <span>Sort by:</span>
                 {yelpSorting.map((sortItem, index) => (

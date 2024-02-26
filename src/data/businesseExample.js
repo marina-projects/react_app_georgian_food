@@ -1,7 +1,7 @@
 export const businessExample = [
     {
         imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-        name: 'MarginOtto Pizzeria',
+        name: 'Pasanauri',
         address: '1010 Paddington Way',
         city: 'Flavortown',
         state: 'NY',
@@ -13,7 +13,7 @@ export const businessExample = [
     },
     {
         imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-        name: 'MarginOtto Pizzeria',
+        name: 'Khachapuri and vine',
         address: '1010 Paddington Way',
         city: 'Flavortown',
         state: 'NY',
@@ -25,7 +25,7 @@ export const businessExample = [
     },
     {
         imageSrc: 'https://content.codecademy.com/programs/react/ravenous/pizza.jpg',
-        name: 'MarginOtto Pizzeria',
+        name: 'Chita-Gvrita',
         address: '1010 Paddington Way',
         city: 'Flavortown',
         state: 'NY',

@@ -1,25 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import './searchBar.css'
 
-const SearchBar = ({yelpSorting}) => {
-
-    const [businessValue, setBusinessValue] = useState('');
-    const [cityValue, setCityValue] = useState('');
-
-    const businessValueHandler = (e) => {
-        e.preventDefault();
-        setBusinessValue(e.target.value)
-    }
-
-    const cityValueHandler = (e) => {
-        e.preventDefault();
-        setCityValue(e.target.value);
-    }
-
-    const searchFormHandler = (e) => {
-        e.preventDefault();
-        console.log(`Searching Yelp with ${businessValue} in ${cityValue}`)
-    }
+const SearchBar = ( { businessValue, businessValueHandler, setBusinessValue, cityValue, setCityValue, cityValueHandler, searchFormHandler}) => {
 
     return (
         <div className="search-bar div-column">
