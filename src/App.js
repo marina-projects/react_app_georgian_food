@@ -5,6 +5,7 @@ import Header from './components/header/header';
 import SearchBar from './components/searchBar/searchBar';
 import { businessExample } from './data/businesseExample';
 import { yelpSorting } from './data/yelpSorting';
+import searchBusiness from './utils/yelp';
 
 function App() {
   
@@ -13,48 +14,65 @@ function App() {
   const [visibilityOfSearchDiv, setVisibilityOfSearchDiv] = useState({display: 'none'});
   const [businessValue, setBusinessValue] = useState('');
   const [cityValue, setCityValue] = useState('');
+  const [activeSort, setActiveSort] = useState('best_match');
+
+  const [noResultsMessage, setNoResultsMessage] = useState('');
+
+  const searchYelp = async (businessValue, cityValue, activeSort) => {
+    const businesses = await searchBusiness(businessValue, cityValue, activeSort);
+    if (businesses && businesses.length > 0) {
+        setBusinessList(businesses);
+        setNoResultsMessage(''); // Очистить сообщение об отсутствии результатов, если оно было установлено ранее
+    } else {
+        setBusinessList([]);
+        setNoResultsMessage('Ничего не найдено. Пожалуйста, измените критерии поиска.'); // Установить сообщение об отсутствии результатов
+    }
+};
 
   const businessValueHandler = (e) => {
-      e.preventDefault();
-      setBusinessValue(e.target.value)
+    e.preventDefault();
+    setBusinessValue(e.target.value)
   }
 
   const cityValueHandler = (e) => {
-      e.preventDefault();
-      setCityValue(e.target.value);
+    e.preventDefault();
+    setCityValue(e.target.value);
   }
+
 
   const searchFormHandler = (e) => {
-      e.preventDefault();
-      businessListHandler();
-      console.log(`Searching Yelp with ${businessValue} in ${cityValue}`)
+    e.preventDefault();
+    businessListHandler();
+    searchYelp(businessValue, cityValue, activeSort);
+    console.log(`Searching Yelp with ${businessValue} in ${cityValue}`);
   }
-
-  // const businessListHandler = () => {
-  //   if (businessValue) {
-  //       const filteredList = businessList.filter((item) => item.name.includes(businessValue));
-  //       setBusinessList(filteredList);
-  //       setVisibilityOfSearchDiv({display: 'block'})
-  //   } 
-  // }
 
   const businessListHandler = () => {
     let filteredList = fullBusinessList; 
     if (businessValue) {
-        filteredList = filteredList.filter((item) => item.name.includes(businessValue));
+        const lowerCaseBusinessValue = businessValue.toLowerCase(); 
+        filteredList = filteredList.filter((item) => item.name.toLowerCase().includes(lowerCaseBusinessValue));
     }
     if (cityValue) {
-        filteredList = filteredList.filter((item) => item.city.includes(cityValue));
+        const lowerCaseCityValue = cityValue.toLowerCase(); 
+        filteredList = filteredList.filter((item) => item.city.toLowerCase().includes(lowerCaseCityValue));
     }
-    setBusinessList(filteredList);
-    setVisibilityOfSearchDiv({display: filteredList.length > 0 ? 'block' : 'none'});
+    setBusinessList(filteredList); 
+    setVisibilityOfSearchDiv({display: filteredList.length > 0 ? 'flex' : 'none'}); 
+  }
+
+  const handleSortClick = (index) => {
+    setActiveSort(index);
+    const sortFunction = yelpSorting[index].function;
+    const sortedBusinesses = [...businessList].sort(sortFunction);
+    setBusinessList(sortedBusinesses);
 }
 
   const clearSearchHandler = () => {
-        setBusinessList(fullBusinessList);
-        setVisibilityOfSearchDiv({display: 'none'});
-        setBusinessValue('');
-        setCityValue('');
+    setBusinessList(fullBusinessList);
+    setVisibilityOfSearchDiv({display: 'none'});
+    setBusinessValue('');
+    setCityValue('');
   }
 
   return (
@@ -68,8 +86,9 @@ function App() {
           setCityValue={setCityValue}
           cityValueHandler={cityValueHandler}
           searchFormHandler={searchFormHandler}
-
+          searchYelp={searchYelp}
         />
+        {noResultsMessage && <div className="no-results-message">{noResultsMessage}</div>}
         <BusinessList
             yelpSorting={yelpSorting}
             businesses={businessList}
@@ -77,6 +96,9 @@ function App() {
             businessValue={businessValue}
             cityValue={cityValue}
             clearSearchHandler={clearSearchHandler}
+            activeSort={activeSort}
+            setActiveSort={setActiveSort}
+            handleSortClick={handleSortClick}
         />
     </div>
   );

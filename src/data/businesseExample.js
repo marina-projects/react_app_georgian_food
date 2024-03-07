@@ -7,8 +7,8 @@ export const businessExample = [
         state: 'NY',
         zipCode: '10101',
         category: 'Italian',
-        rating: 4.5,
-        reviewCount: 90,
+        rating: 5,
+        reviewCount: 20,
         id: 1
     },
     {
@@ -31,8 +31,8 @@ export const businessExample = [
         state: 'NY',
         zipCode: '10101',
         category: 'Italian',
-        rating: 4.5,
-        reviewCount: 90,
+        rating: 4.8,
+        reviewCount: 60,
         id: 3
     }
 ];

@@ -1,7 +1,8 @@
 import React from "react";
 import './searchBar.css'
 
-const SearchBar = ( { businessValue, businessValueHandler, setBusinessValue, cityValue, setCityValue, cityValueHandler, searchFormHandler}) => {
+const SearchBar = ( { businessValue, businessValueHandler, setBusinessValue, cityValue, setCityValue, cityValueHandler, searchFormHandler, searchYelp}) => {
+
 
     return (
         <div className="search-bar div-column">

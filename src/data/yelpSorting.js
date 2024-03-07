@@ -5,10 +5,12 @@ export const yelpSorting = [
     },
     {
         name: 'Rating',
-        value: 'rating'
+        value: 'rating',
+        function: (a, b) => b.rating - a.rating || b.reviewCount - a.reviewCount,
     },
     {
         name: 'Review count',
-        value: 'review_count'
+        value: 'review_count',
+        function: (a, b) => b.reviewCount - a.reviewCount || b.rating - a.rating,
     }
 ];
