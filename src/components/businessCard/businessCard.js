@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import './businessCard.css';
 import Rating from '@mui/material/Rating';
 
 
 const BusinessCard = (props) => {
-    const [value, setValue] = useState();
 
     return (
         <div className="business-card div-row">
@@ -17,7 +16,7 @@ const BusinessCard = (props) => {
                     <span>{props.state}</span>
                 </div>
                 <div className="card-rating-area div-column">
-                <Rating name="read-only" value={value} readOnly />
+                <Rating name="read-only" value={props.rating} readOnly />
                     <p>Rating: {props.rating} stars</p>
                     <p>{props.reviewCount} reviews</p>
                 </div>

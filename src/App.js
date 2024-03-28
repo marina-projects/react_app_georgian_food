@@ -9,23 +9,27 @@ import searchBusiness from './utils/yelp';
 function App() {
   
   const [businessList, setBusinessList] = useState([]);
-  const [fullBusinessList] = useState([]);
   const [visibilityOfSearchDiv, setVisibilityOfSearchDiv] = useState({display: 'none'});
   const [businessValue, setBusinessValue] = useState('');
   const [cityValue, setCityValue] = useState('');
   const [activeSort, setActiveSort] = useState('best_match');
+  const [cities, setCities] = useState([]);
+
 
   const [noResultsMessage, setNoResultsMessage] = useState('');
 
   // Initial loading of businesses
   const fetchDefaultRestaurants = async () => {
-    const defaultLocation = 'New York'; // May be chanched by other cities
+    const defaultLocation = 'New-York'; // Можно изменить или выполнить запросы для нескольких городов
     const defaultTerm = 'Georgian';
     const defaultSort = 'best_match';
     try {
       const businesses = await searchBusiness(defaultTerm, defaultLocation, defaultSort);
       if (businesses && businesses.length > 0) {
         setBusinessList(businesses);
+        const newCities = businesses.map(business => business.city);
+        console.log("Загруженные города:", newCities);
+        setCities(currentCities => [...new Set([...currentCities, ...newCities])]);
       } else {
         setNoResultsMessage('Грузинские рестораны не найдены. Пожалуйста, измените критерии поиска.');
       }
@@ -34,6 +38,7 @@ function App() {
       setNoResultsMessage('Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.');
     }
   };
+  
   
   // useEffect for loading initial list by first render
   useEffect(() => {
@@ -44,17 +49,26 @@ function App() {
   const searchYelp = async (businessValue, cityValue, activeSort) => {
     // Установка значения по умолчанию для города, если он не указан пользователем
     const searchLocation = cityValue || 'New York'; // Пример использования Нью-Йорка как значения по умолчанию
-  
     console.log(`Searching Yelp with term: ${businessValue}, location: ${searchLocation}, sort by: ${activeSort}`);
     const businesses = await searchBusiness(businessValue, searchLocation, activeSort);
     if (businesses && businesses.length > 0) {
         setBusinessList(businesses);
+        const newCities = businesses.map(business => business.city); // Исправлено здесь
+        // Обновление списка городов с использованием функционального обновления состояния
+        console.log("Новые города:", newCities);
+        setCities(currentCities => [...new Set([...currentCities, ...newCities])]);
         setNoResultsMessage(''); // Clear message about no results
     } else {
         setBusinessList([]);
         setNoResultsMessage('No search results. Please, try another query'); // Message if no results
     }
   };
+
+  useEffect(() => {
+    console.log(cities);
+  }, [cities]); // Эффект будет вызываться каждый раз, когда обновляется список городов
+  
+  
 
   // handlers for search fields and form
   const businessValueHandler = (e) => {
@@ -75,20 +89,6 @@ function App() {
     console.log(`Searching Yelp with ${businessValue} in ${cityValue}`);
 
   }
-
-  // const businessListHandler = () => {
-  //   let filteredList = fullBusinessList; 
-  //   if (businessValue) {
-  //       const lowerCaseBusinessValue = businessValue.toLowerCase(); 
-  //       filteredList = filteredList.filter((item) => item.name.toLowerCase().includes(lowerCaseBusinessValue));
-  //   }
-  //   if (cityValue) {
-  //       const lowerCaseCityValue = cityValue.toLowerCase(); 
-  //       filteredList = filteredList.filter((item) => item.city.toLowerCase().includes(lowerCaseCityValue));
-  //   }
-  //   setBusinessList(filteredList); 
-  //   setVisibilityOfSearchDiv({display: filteredList.length > 0 ? 'flex' : 'none'}); 
-  // }
 
   const handleSortClick = (index) => {
     setActiveSort(index);
@@ -117,6 +117,7 @@ const clearSearchHandler = () => {
           cityValueHandler={cityValueHandler}
           searchFormHandler={searchFormHandler}
           searchYelp={searchYelp}
+          cities={cities}
         />
         {noResultsMessage && <div className="no-results-message">{noResultsMessage}</div>}
         <BusinessList

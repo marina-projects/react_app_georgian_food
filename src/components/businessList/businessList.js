@@ -8,13 +8,14 @@ const BusinessList = ({businesses, yelpSorting, visibilityOfSearchDiv, businessV
     return (
         <div className="business-list div-column">
             <div className="search-for div-row" style={visibilityOfSearchDiv}>
-                <p>Searching for: {businessValue.length !== 0 ? <span>'{businessValue}'</span> : <span>All restaurants</span>} in {cityValue.length !== 0 ? <span>{cityValue}</span> : <span>All cities</span>}</p>
+            <p>Searching for: {(businessValue && businessValue.length) !== 0 ? <span>'{businessValue}'</span> : <span>All restaurants</span>} in {(cityValue && cityValue.length) !== 0 ? <span>{cityValue}</span> : <span>All cities</span>}</p>
+
                 <div className="clear-search div-row">
                     <p onClick={clearSearchHandler}>Clear search </p>
                     <img src={closeIcon} alt="" onClick={clearSearchHandler} height={'20px'}/>
                 </div>
             </div>
-            <p style={businesses.length === 0 ? {display: 'flex'} : {display: 'none'}} className="no-found">Nothing found... Try new search, please</p>
+            <p style={businesses.length === 0 ? {display: 'flex'} : {display: 'none'}} className="no-found">Loading restaurants... </p>
             <div className="sorting div-row" style={businesses.length !== 0 ? {display: 'flex'} : {display: 'none'}}>
                 <span>Sort by:</span>
                 {yelpSorting.map((sortItem, index) => (

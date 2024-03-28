@@ -64,6 +64,10 @@
     font-size: 20px;
 }
 
+.autocomlete-city button {
+    background-color: transparent;
+}
+
 @media screen and (max-width: 767px) {
 
     .search-bar h1 {
