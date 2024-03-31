@@ -35,7 +35,7 @@ function App() {
       }
     } catch (error) {
       console.error('Ошибка при получении списка ресторанов:', error);
-      setNoResultsMessage('Произошла ошибка при загрузке данных. Пожалуйста, попробуйте позже.');
+      setNoResultsMessage('An error occurred while loading data. Please try again later.');
     }
   };
   
