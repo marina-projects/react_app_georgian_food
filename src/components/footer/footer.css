@@ -1,0 +1,52 @@
+.footer {
+    background-color:  rgb(236, 192, 0);
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.first-column {
+    width: 65%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.project-description {
+    margin-left: 6%;
+    margin-top: 2%;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.project-description p, .project-description a {
+    text-align: left;
+}
+
+.first-column .logo-area {
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+.second-column {
+    width: 35%;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.second-column img {
+    width: 80px;
+    height: auto;
+    margin-top: 10%;
+}
+
+.icons-area {
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.icons-area img {
+    width: 28px;
+    height: auto;
+    margin-top: 0;
+}

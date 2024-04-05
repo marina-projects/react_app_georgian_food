@@ -5,6 +5,7 @@ import Header from './components/header/header';
 import SearchBar from './components/searchBar/searchBar';
 import { yelpSorting } from './data/yelpSorting';
 import searchBusiness from './utils/yelp';
+import Footer from './components/footer/footer';
 
 function App() {
   
@@ -131,6 +132,7 @@ const clearSearchHandler = () => {
             setActiveSort={setActiveSort}
             handleSortClick={handleSortClick}
         />
+        <Footer />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Rating from '@mui/material/Rating';
 const BusinessCard = ({imageSrc, name, address, city, state, rating, reviewCount, id, url}) => {
 
     const handleOpen = () => {
-        window.open(url, "_blank"); // Открываем URL в новой вкладке
+        window.open(url, "_blank");
     };
 
     return (
