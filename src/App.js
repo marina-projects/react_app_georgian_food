@@ -16,7 +16,6 @@ function App() {
   const [activeSort, setActiveSort] = useState('best_match');
   const [cities, setCities] = useState([]);
 
-
   const [noResultsMessage, setNoResultsMessage] = useState('');
 
   // Initial loading of businesses

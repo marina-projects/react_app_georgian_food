@@ -3,7 +3,7 @@ import './footer.css';
 import logo from '../../images/11234406421538117460.svg';
 import photo from "../../images/profile-pic (2) 2.png";
 import telegram from '../../images/telegram.svg';
-import whatsapp from '../../images/telegram.svg';
+import whatsapp from '../../images/whatsapp.svg';
 import linkedin from '../../images/LinkedIn.svg';
 import upwork from '../../images/upwork.svg';
 
