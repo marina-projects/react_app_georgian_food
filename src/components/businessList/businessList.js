@@ -25,6 +25,7 @@ const BusinessList = ({businesses, yelpSorting, visibilityOfSearchDiv, businessV
             {businesses.map((businessItem) => (
                 <>
                     <BusinessCard
+                        id={businessItem.id}
                         key={businessItem.id} 
                         imageSrc={businessItem.imageSrc}
                         name={businessItem.name}

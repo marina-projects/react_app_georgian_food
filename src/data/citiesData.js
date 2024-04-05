@@ -5,7 +5,6 @@ export const allCities = [
     'Houston',
     'Philadelphia',
     'San-Diego',
-    'Dallas',
     'San-Francisco',
     'Seattle',
     'Washington',

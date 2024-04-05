@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './businessCard.css';
 import Rating from '@mui/material/Rating';
 import Modal from '@mui/material/Modal';
@@ -17,28 +17,47 @@ const style = {
     p: 4,
 };
 
-
-const BusinessCard = (props) => {
+const BusinessCard = ({imageSrc, name, address, city, state, rating, reviewCount, id}) => {
 
     const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
+    const [details, setDetails] = useState(null); // Состояние для хранения деталей и отзывов
+
+
+    const handleOpen = async () => {
+        // Запускаем индикатор загрузки или аналогичный механизм, если необходимо
+        // Выполняем запрос к Netlify Function для получения дополнительной информации о бизнесе
+        try {
+            const detailsResponse = await fetch(`/.netlify/functions/yelp-proxy?businessId=${id}`);
+            const detailsData = await detailsResponse.json();
+            
+            // Предположим, что у нас есть состояние для хранения этих деталей
+            console.log(detailsData);
+            setDetails(detailsData); // Сохраняем полученные детали в состоянии
+    
+            setOpen(true); // Открываем модальное окно после загрузки данных
+        } catch (error) {
+            console.error("Ошибка при получении детальной информации о бизнесе:", error);
+            // Обрабатываем ошибку, возможно уведомляем пользователя
+        }
+    };
+    // const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <>
             <div className="business-card div-row" onClick={handleOpen}>
-                <img src={props.imageSrc} alt=''/>
+                <img src={imageSrc} alt=''/>
                 <div className="card-text-area div-row">
-                    <h3>{props.name}</h3>
+                    <h3>{name}</h3>
                     <div className="card-address-area div-column">
-                        <p>{props.address}</p>
-                        <p>{props.city}</p>
-                        <span>{props.state}</span>
+                        <p>{address}</p>
+                        <p>{city}</p>
+                        <span>{state}</span>
                     </div>
                     <div className="card-rating-area div-column">
-                    <Rating name="read-only" value={props.rating} readOnly />
-                        <p>Rating: {props.rating} stars</p>
-                        <p>{props.reviewCount} reviews</p>
+                    <Rating name="read-only" value={rating} readOnly />
+                        <p>Rating: {rating} stars</p>
+                        <p>{reviewCount} reviews</p>
                     </div>
                 </div>    
             </div>
@@ -49,7 +68,16 @@ const BusinessCard = (props) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <BusinessPopup />
+                    <BusinessPopup 
+                        name={name}
+                        imageSrc={imageSrc}
+                        rating={rating}
+                        reviewCount={reviewCount}
+                        address={address}
+                        city={city}
+                        state={state}
+                        details={details}
+                    />
                 </Box>
             </Modal>
         </>        
