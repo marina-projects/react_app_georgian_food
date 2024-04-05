@@ -34,6 +34,7 @@ const BusinessList = ({businesses, yelpSorting, visibilityOfSearchDiv, businessV
                         state={businessItem.state}
                         rating={businessItem.rating}
                         reviewCount={businessItem.reviewCount}
+                        url={businessItem.url}
                     />
                 </>
                 ))
