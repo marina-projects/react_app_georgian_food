@@ -19,7 +19,7 @@ const Footer = () => {
                 <div className="project-description div-column">
                     <p>This is learning prject...</p>
                     <p>Read more on GitHub:</p>
-                    <a href="#">GitHab</a>
+                    <a href="https://github.com/marina-projects">GitHab</a>
                 </div>
             </div>
             <div className="second-column div-column">
