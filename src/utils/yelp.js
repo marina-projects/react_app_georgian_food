@@ -1,7 +1,7 @@
-import { yelpData } from "./yelpData";
+// import { yelpData } from "./yelpData";
 
-const apiKey = yelpData.apiKey;
-const yelpBaseUrl = 'https://api.yelp.com/v3';
+// const apiKey = yelpData.apiKey;
+// const yelpBaseUrl = 'https://api.yelp.com/v3';
 
 // function searchBusiness(term, location, sortBy) {
 //     const corsOverride = 'https://cors-anywhere.herokuapp.com/'; // Для обхода ограничений CORS во время разработки
