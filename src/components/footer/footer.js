@@ -18,13 +18,13 @@ const Footer = () => {
                 </div>
                 <div className="project-description div-column">
                     <p>This is learning prject...</p>
-                    <p>Read more on GitHub:</p>
-                    <a href="https://github.com/marina-projects">GitHab</a>
+                    <p className="read-more">Read more on GitHub:</p>
+                    <a href="https://github.com/marina-projects">GitHub</a>
                 </div>
             </div>
             <div className="second-column div-column">
                 <img src={photo} alt='developer'/>
-                <p>Developer: Marina Romanova</p>
+                <p>Developer Marina Romanova</p>
                 <p>Contact me:</p>
                 <p>Email: </p>
                 <p>Website: </p>

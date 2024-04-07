@@ -22,6 +22,10 @@
     text-align: left;
 }
 
+.project-description p {
+    font-size: 16px;
+}
+
 .first-column .logo-area {
     margin-top: 5%;
     margin-left: 3%;
@@ -49,4 +53,62 @@
     width: 28px;
     height: auto;
     margin-top: 0;
+}
+
+.project-description a {
+    background-color: #263238;
+    color:  white;
+    padding: 15px 46px;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+.project-description a:hover, .icons-area img:hover {
+    transform: scale(1.1);
+    transition-duration: 400ms;
+    cursor: pointer;
+  }
+
+@media screen and (max-width: 767px) {
+    .first-column, .second-column, .first-column .logo-area {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .first-column .logo-area {
+        gap: 2px;
+        margin-left: -15px;
+    }
+
+    .first-column img {
+        height: 60px;
+    }
+
+    .first-column .logo-area p {
+        font-size: 18px;
+        margin-top: 8px;
+    }
+
+    .project-description {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .icons-area {
+        justify-content: center;
+    }
+
+    .read-more {
+        text-align: center;
+        align-self: center;
+        margin-top: 10px;
+    }
+
+    .project-description a {
+        padding: 8px 15px;
+        align-self: center;
+        font-size: 12px;
+    }
 }
