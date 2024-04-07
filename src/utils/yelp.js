@@ -1,12 +1,13 @@
-function searchBusiness(term, location, sortBy) {
+function searchBusiness(term, location, sortBy, categories = 'georgian') { // Добавляем categories с дефолтным значением 'georgian'
     // Построение URL для запроса к Netlify Function
-    const functionUrl = `https://georgian-food.netlify.app/.netlify/functions/yelp-proxy?`;
+    const functionUrl = `https://georgian-food.netlify.app/.netlify/functions/yelp-proxy`;
 
     // Формирование параметров запроса
     const params = new URLSearchParams({
         term,
         location,
         sortBy,
+        categories, // Добавляем categories в параметры запроса
         path: 'businesses/search', // Указание пути API Yelp для функции
     });
 
