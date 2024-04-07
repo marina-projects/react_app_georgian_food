@@ -39,3 +39,5 @@ function searchBusiness(term, location, sortBy) {
     })
     .catch(error => console.error('Error fetching data:', error));
 }
+
+export default searchBusiness;
