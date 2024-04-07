@@ -44,7 +44,7 @@
 
 function searchBusiness(term, location, sortBy) {
     // Построение URL для запроса к Netlify Function
-    const functionUrl = `/.netlify/functions/yelp-proxy`;
+    const functionUrl = `https://georgian-food.netlify.app/.netlify/functions/yelp-proxy?`;
 
     // Формирование параметров запроса
     const params = new URLSearchParams({
