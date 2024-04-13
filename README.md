@@ -1,4 +1,4 @@
-# Flower Power Music react app
+# Georgian food in USA react app
 
 This is a [basic search app](https://georgian-food.netlify.app/) that uses Yelp API to allow users to search Georgian eatery in USA cities. 
 
