@@ -87,7 +87,6 @@ function App() {
     searchYelp(businessValue, cityValue, activeSort);
     setVisibilityOfSearchDiv({display: 'flex'});
     console.log(`Searching Yelp with ${businessValue} in ${cityValue}`);
-
   }
 
   const handleSortClick = (index) => {
